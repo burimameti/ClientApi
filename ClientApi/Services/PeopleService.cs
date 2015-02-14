@@ -12,6 +12,7 @@ using Rob.Interfaces.Core.Data;
 
 namespace Cofamilies.ClientApi.Services
 {
+  #if refactoring
   public interface IPeopleService
   {
     IPersonModel Get(IRobID rid);
@@ -19,6 +20,7 @@ namespace Cofamilies.ClientApi.Services
 
   public class PeopleService : ServiceBase, IPeopleService
   {
+
     // Constructors
 
     #region PeopleService(IApiClientContext context)
@@ -83,5 +85,5 @@ namespace Cofamilies.ClientApi.Services
       return "PeopleService_Get_{0}".AsFormat(rid);
     }
   }
-
+#endif
 }

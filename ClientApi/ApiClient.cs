@@ -7,6 +7,7 @@ using System.Net.Http.Headers;
 using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
+using Cofamilies.ClientApi.Accounts;
 using Cofamilies.ClientApi.Caching;
 using Cofamilies.ClientApi.Services;
 
@@ -14,10 +15,11 @@ namespace Cofamilies.ClientApi
 {
   public interface IApiClient
   {
-    IActivitiesService Activities { get; }
+    IAccountsClient Accounts { get; }
+    //IActivitiesService Activities { get; }
     IApiClientContext Context { get; }
-    IDeviceService Devices { get; }
-    IPeopleService People { get; }    
+    //IDeviceService Devices { get; }
+    //IPeopleService People { get; }    
   }
 
   public class ApiClient : IApiClient
@@ -33,18 +35,20 @@ namespace Cofamilies.ClientApi
       Cache = cache;
       Context = context;
 
-      Activities = new ActivitiesService(Context);
-      Devices = new CachingDevicesService(Context);
-      People = new CachingPeopleService(Context);
+      Accounts = new AccountsClient(context);
+      //Activities = new ActivitiesService(Context);
+      //Devices = new CachingDevicesService(Context);
+      //People = new CachingPeopleService(Context);
     } 
     #endregion
 
     // Properties
 
-    public IActivitiesService Activities { get; private set; }
+    public IAccountsClient Accounts { get; private set; }
+    //public IActivitiesService Activities { get; private set; }
     public IApiClientCache Cache { get; private set; }
     public IApiClientContext Context { get; private set; }
-    public IDeviceService Devices { get; private set; }
-    public IPeopleService People { get; private set; }
+    //public IDeviceService Devices { get; private set; }
+    //public IPeopleService People { get; private set; }
   }
 }

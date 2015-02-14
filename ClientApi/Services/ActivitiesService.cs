@@ -12,6 +12,7 @@ using Rob.Interfaces.Core.Data;
 
 namespace Cofamilies.ClientApi.Services
 {
+#if false
   public interface IActivitiesService
   {
     ActivityModel Get(IRobID rid);
@@ -72,4 +73,5 @@ namespace Cofamilies.ClientApi.Services
     } 
     #endregion
   }
+#endif
 }

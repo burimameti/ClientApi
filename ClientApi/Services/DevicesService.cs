@@ -16,6 +16,7 @@ using Rob.Interfaces.Core.Data;
 
 namespace Cofamilies.ClientApi.Services
 {
+#if false
   public interface IDeviceService
   {
     List<IDeviceModel> Get(IRobID principalRID);
@@ -99,4 +100,5 @@ namespace Cofamilies.ClientApi.Services
       return "DevicesService_Get_{0}".AsFormat(principalRID);
     }
   }
+#endif
 }
