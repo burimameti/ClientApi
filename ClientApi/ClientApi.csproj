@@ -57,19 +57,19 @@
     </Reference>
     <Reference Include="Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Core.1.0.0-CI00038\lib\net45\Core.dll</HintPath>
+      <HintPath>..\packages\Core.1.0.0-CI00040\lib\net45\Core.dll</HintPath>
     </Reference>
     <Reference Include="Core.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Core.Data.1.0.0-CI00038\lib\net45\Core.Data.dll</HintPath>
+      <HintPath>..\packages\Core.Data.1.0.0-CI00040\lib\net45\Core.Data.dll</HintPath>
     </Reference>
     <Reference Include="Interfaces.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Interfaces.Core.1.0.0-CI00038\lib\net45\Interfaces.Core.dll</HintPath>
+      <HintPath>..\packages\Interfaces.Core.1.0.0-CI00040\lib\net45\Interfaces.Core.dll</HintPath>
     </Reference>
     <Reference Include="Interfaces.Core.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Interfaces.Core.Data.1.0.0-CI00038\lib\net45\Interfaces.Core.Data.dll</HintPath>
+      <HintPath>..\packages\Interfaces.Core.Data.1.0.0-CI00040\lib\net45\Interfaces.Core.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -100,9 +100,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accounts\Account.cs" />
+    <Compile Include="Accounts\AccountCreateResult.cs" />
     <Compile Include="Accounts\AccountsClient.cs" />
     <Compile Include="ApiClient.cs" />
     <Compile Include="ApiClientContext.cs" />
+    <Compile Include="ApiClientSettings.cs" />
     <Compile Include="Builders\BasicAuthenticationBuilder.cs" />
     <Compile Include="Caching\ApiClientCache.cs" />
     <Compile Include="Models\ActivityModel.cs" />

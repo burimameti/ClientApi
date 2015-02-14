@@ -27,15 +27,18 @@ namespace Cofamilies.ClientApi
     // Constructor
 
     #region ApiClient()
-    public ApiClient(IApiClientCache cache, IApiClientContext context)
+    //public ApiClient(IApiClientCache cache, IApiClientContext context)
+    public ApiClient(IApiClientSettings settings = null)
     {
+      settings = settings ?? ApiClientSettings.Default;
+
 //#if DEBUG
       ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
 //#endif
-      Cache = cache;
-      Context = context;
+      //Cache = cache;
+      //Context = context;
 
-      Accounts = new AccountsClient(context);
+      Accounts = new AccountsClient(settings);
       //Activities = new ActivitiesService(Context);
       //Devices = new CachingDevicesService(Context);
       //People = new CachingPeopleService(Context);
@@ -45,6 +48,7 @@ namespace Cofamilies.ClientApi
     // Properties
 
     public IAccountsClient Accounts { get; private set; }
+    public string ApiAddress { get; private set; }
     //public IActivitiesService Activities { get; private set; }
     public IApiClientCache Cache { get; private set; }
     public IApiClientContext Context { get; private set; }

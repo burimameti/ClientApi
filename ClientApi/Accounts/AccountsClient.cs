@@ -13,7 +13,10 @@ namespace Cofamilies.ClientApi.Accounts
   #region IAccountsClient
   public interface IAccountsClient
   {
-    Task<JAccountCreateResult> CreateAsync(string email, string name = null, string password = null,
+    IAccountCreateResult Create(string email, string name = null, string password = null,
+      bool sendActivationEmail = true, bool acceptTerms = true);
+
+    Task<IAccountCreateResult> CreateAsync(string email, string name = null, string password = null,
       bool sendActiviationEmail = true, bool acceptTerms = true);
   }
   #endregion
@@ -22,21 +25,35 @@ namespace Cofamilies.ClientApi.Accounts
   {
     // Constructors
 
-    #region AccountsClient(IApiClientContext context)
-    public AccountsClient(IApiClientContext context)
+    #region AccountsClient(IApiClientSettings settings = null)
+    public AccountsClient(IApiClientSettings settings = null)
     {
-      Context = context;
+      Settings = settings ?? ApiClientSettings.Default;
     }
     #endregion
 
     // Properties
 
+    public IApiClientSettings Settings { get; private set; }
     public IApiClientContext Context { get; set; }
+
+    public string Endpoint
+    {
+      get { return Settings.AccountsEndpoint; }
+    }
 
     // Methods
 
     #region CreateAsync(string email, string name = null, string password = null, bool sendActivationEmail = true, bool acceptTerms = true)
-    public async Task<JAccountCreateResult> CreateAsync(string email, string name = null, string password = null, bool sendActivationEmail = true, bool acceptTerms = true)
+
+    public IAccountCreateResult Create(string email, string name = null, string password = null, bool sendActivationEmail = true,
+      bool acceptTerms = true)
+    {
+      var task = CreateAsync(email, name, password, sendActivationEmail, acceptTerms);
+      return task.GetAwaiter().GetResult();
+    }
+
+    public async Task<IAccountCreateResult> CreateAsync(string email, string name = null, string password = null, bool sendActivationEmail = true, bool acceptTerms = true)
     {
       // Guard
 
@@ -56,18 +73,19 @@ namespace Cofamilies.ClientApi.Accounts
 
       // Post
 
-      using (var client = Context.CreateClient())
+      JAccountCreateResult jresult = null;
+      using (var client = Settings.HttpClientFactory.Create())
       {
-        HttpResponseMessage response = await client.PostAsJsonAsync("api/products/1", jaccount);
+        HttpResponseMessage response = await client.PostAsJsonAsync(Endpoint, jaccount);
         if (response.IsSuccessStatusCode)
-          return await response.Content.ReadAsAsync<JAccountCreateResult>();
+          jresult = await response.Content.ReadAsAsync<JAccountCreateResult>();
 
         response.EnsureSuccessStatusCode();
       }
 
-      // Should never get here
+      // Map from wire representation
 
-      throw new ApplicationException("Shouldn't be here");
+      return new AccountCreateResult(jresult);
     } 
     #endregion
   }
