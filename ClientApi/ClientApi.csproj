@@ -52,24 +52,25 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
-    <Reference Include="Cofamilies.J.Core">
-      <HintPath>..\packages\Cofamilies.J.Core.1.0.0-CI00005\lib\net45\Cofamilies.J.Core.dll</HintPath>
+    <Reference Include="Cofamilies.J.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Cofamilies.J.Core.1.0.0-CI00006\lib\net45\Cofamilies.J.Core.dll</HintPath>
     </Reference>
     <Reference Include="Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Core.1.0.0-CI00040\lib\net45\Core.dll</HintPath>
+      <HintPath>..\packages\Core.1.0.0-CI00042\lib\net45\Core.dll</HintPath>
     </Reference>
     <Reference Include="Core.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Core.Data.1.0.0-CI00040\lib\net45\Core.Data.dll</HintPath>
+      <HintPath>..\packages\Core.Data.1.0.0-CI00042\lib\net45\Core.Data.dll</HintPath>
     </Reference>
     <Reference Include="Interfaces.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Interfaces.Core.1.0.0-CI00040\lib\net45\Interfaces.Core.dll</HintPath>
+      <HintPath>..\packages\Interfaces.Core.1.0.0-CI00042\lib\net45\Interfaces.Core.dll</HintPath>
     </Reference>
     <Reference Include="Interfaces.Core.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Interfaces.Core.Data.1.0.0-CI00040\lib\net45\Interfaces.Core.Data.dll</HintPath>
+      <HintPath>..\packages\Interfaces.Core.Data.1.0.0-CI00042\lib\net45\Interfaces.Core.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
