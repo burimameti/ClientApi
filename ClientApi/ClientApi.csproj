@@ -116,6 +116,7 @@
     <Compile Include="Services\DevicesService.cs" />
     <Compile Include="Services\PeopleService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
+    <Compile Include="Utilities\UrlUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

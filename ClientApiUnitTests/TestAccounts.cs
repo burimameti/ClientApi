@@ -17,6 +17,11 @@ namespace Cofamilies.ClientApiUnitTests
   [TestFixture]
   public class TestAccounts
   {
+    // Endpoints
+
+    private const string EndpointMaster = "https://cofamiliesmaster.azurewebsites.net/api";
+    private const string EndpointLocal = "https://localhost:44301/api";
+
     // Creation Methods
 
     public string CreateEmail()
@@ -37,23 +42,21 @@ namespace Cofamilies.ClientApiUnitTests
     [SetUp]
     public void SetUp()
     {
-      //ApiClientSettings.Default.Endpoint = "https://cofamiliesmaster.azurewebsites.net/api";
-      ApiClientSettings.Default.Endpoint = "https://localhost:44301/api";
-      ApiClientSettings.Default.HttpClientFactory = new RobFactory<HttpClient>(CreateFakeHttpClient);
+      ApiClientSettings.Default.Endpoint = EndpointLocal;
 
       // TODO: Resume dealing with mocking hell at a later date
-
       //var response = new HttpResponseMessage(HttpStatusCode.OK);
       //response.Content = HttpContent.
       //"{ activationCode: foo }";
-
-      var fakeHandler = new FakeResponseHandler();
-      fakeHandler.AddFakeResponse(new Uri(ApiClientSettings.Default.AccountsEndpoint), new HttpResponseMessage(HttpStatusCode.OK));
+      //ApiClientSettings.Default.HttpClientFactory = new RobFactory<HttpClient>(CreateFakeHttpClient);
+      //var fakeHandler = new FakeResponseHandler();
+      //fakeHandler.AddFakeResponse(new Uri(ApiClientSettings.Default.AccountsEndpoint), new HttpResponseMessage(HttpStatusCode.OK));
     }
 
     // Test Cases
 
-    [Ignore("Mocking HttpResponse too low of an ROI, prefer integration level tests")]
+    //[Ignore("Mocking HttpResponse too low of an ROI, prefer integration level tests")]
+    [Ignore("Integration Test")]
     public void Create()
     {
       // Arrange
@@ -62,12 +65,20 @@ namespace Cofamilies.ClientApiUnitTests
 
       // Act
 
-      var result = account.Create(CreateEmail(), null, "test");
+      //var result = account.Create(CreateEmail(), null, "test");
+      var result = account.Create("test.account1@dispostable.com", null, "test");
 
       // Assert
 
       Assert.IsNotNull(result);
       Assert.IsNotNullOrEmpty(result.ActivationCode);
+    }
+
+    [Ignore("Integration Test")]
+    public void ResetGeorgeWashington()
+    {
+      var result = new AccountsClient().ResetPassword("george.washington@dispostable.com");
+      Assert.IsTrue(result);
     }
   }
 }

@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Cofamilies.ClientApi.Utilities;
 using Cofamilies.J.Core.Accounts;
 using Rob.Core;
 
@@ -17,7 +18,10 @@ namespace Cofamilies.ClientApi.Accounts
       bool sendActivationEmail = true, bool acceptTerms = true);
 
     Task<IAccountCreateResult> CreateAsync(string email, string name = null, string password = null,
-      bool sendActiviationEmail = true, bool acceptTerms = true);
+      bool sendActivationEmail = true, bool acceptTerms = true);
+
+    bool ResetPassword(string email);
+    Task<bool> ResetPasswordAsync(string email);
   }
   #endregion
 
@@ -37,22 +41,24 @@ namespace Cofamilies.ClientApi.Accounts
     public IApiClientSettings Settings { get; private set; }
     public IApiClientContext Context { get; set; }
 
+    #region Endpoint
     public string Endpoint
     {
       get { return Settings.AccountsEndpoint; }
-    }
+    } 
+    #endregion
 
     // Methods
 
-    #region CreateAsync(string email, string name = null, string password = null, bool sendActivationEmail = true, bool acceptTerms = true)
-
-    public IAccountCreateResult Create(string email, string name = null, string password = null, bool sendActivationEmail = true,
-      bool acceptTerms = true)
+    #region Create(string email, string name = null, string password = null, bool sendActivationEmail = true, bool acceptTerms = true)
+    public IAccountCreateResult Create(string email, string name = null, string password = null, bool sendActivationEmail = true, bool acceptTerms = true)
     {
       var task = CreateAsync(email, name, password, sendActivationEmail, acceptTerms);
       return task.GetAwaiter().GetResult();
-    }
+    } 
+    #endregion
 
+    #region CreateAsync(string email, string name = null, string password = null, bool sendActivationEmail = true, bool acceptTerms = true)
     public async Task<IAccountCreateResult> CreateAsync(string email, string name = null, string password = null, bool sendActivationEmail = true, bool acceptTerms = true)
     {
       // Guard
@@ -86,6 +92,35 @@ namespace Cofamilies.ClientApi.Accounts
       // Map from wire representation
 
       return new AccountCreateResult(jresult);
+    } 
+    #endregion
+
+    #region ResetPassword(string email)
+    public bool ResetPassword(string email)
+    {
+      var task = ResetPasswordAsync(email);
+      return task.GetAwaiter().GetResult();
+    } 
+    #endregion
+
+    #region ResetPasswordAsync(string email)
+    public async Task<bool> ResetPasswordAsync(string email)
+    {
+      var url = Endpoint + "/{0}/password_resets".AsFormat(email);
+      using (var client = Settings.HttpClientFactory.Create())
+      {
+        HttpResponseMessage response = await client.PostAsync(url, new StringContent(""));
+
+        if (response.IsSuccessStatusCode)
+          return true;
+
+        if (response.StatusCode == HttpStatusCode.NotFound)
+          return false;
+
+        response.EnsureSuccessStatusCode();
+      }
+
+      throw new ApplicationException("should never get here");
     } 
     #endregion
   }
