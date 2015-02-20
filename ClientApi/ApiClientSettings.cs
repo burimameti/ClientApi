@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using Castle.MicroKernel;
+using Rob.Core;
 using Rob.Core.DI;
 using Rob.Interfaces.Core.DI;
 
@@ -16,6 +17,8 @@ namespace Cofamilies.ClientApi
   {
     string AccountsEndpoint { get; }
     RobFactory<HttpClient> HttpClientFactory { get; set; }
+    string UserName { get; set; }
+    string Password { get; set; }
     string Endpoint { get; set; }
     string PeopleEndpoint { get; }
   }
@@ -30,6 +33,7 @@ namespace Cofamilies.ClientApi
 
     public ApiClientSettings()
     {
+      var byteArray = Encoding.ASCII.GetBytes("username:password1234");
       HttpClientFactory = new RobFactory<HttpClient>(() => new HttpClient());
     }
 
@@ -41,6 +45,8 @@ namespace Cofamilies.ClientApi
     }
 
     public RobFactory<HttpClient> HttpClientFactory { get; set; }
+    public string UserName { get; set; }
+    public string Password { get; set; }
 
     #region Endpoint
     public string Endpoint
@@ -63,5 +69,18 @@ namespace Cofamilies.ClientApi
       get { return Endpoint + "/people"; }
     } 
     #endregion
+
+    // Methods
+
+    protected HttpClient CreateHttpClient()
+    {
+      var result = new HttpClient();
+      if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
+        return result;
+
+      var byteArray = Encoding.ASCII.GetBytes("{0}:{1}".AsFormat(UserName, Password));
+      result.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+      return result;
+    }
   }
 }
