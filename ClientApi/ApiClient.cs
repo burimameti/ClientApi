@@ -7,8 +7,11 @@ using System.Net.Http.Headers;
 using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Cofamilies.ClientApi.Accounts;
 using Cofamilies.ClientApi.Caching;
+using Cofamilies.ClientApi.Installers;
+using Cofamilies.ClientApi.People;
 using Cofamilies.ClientApi.Services;
 
 namespace Cofamilies.ClientApi
@@ -19,7 +22,7 @@ namespace Cofamilies.ClientApi
     //IActivitiesService Activities { get; }
     IApiClientContext Context { get; }
     //IDeviceService Devices { get; }
-    //IPeopleService People { get; }    
+    IPeopleClient People { get; }    
   }
 
   public class ApiClient : IApiClient
@@ -30,7 +33,13 @@ namespace Cofamilies.ClientApi
     //public ApiClient(IApiClientCache cache, IApiClientContext context)
     public ApiClient(IApiClientSettings settings = null)
     {
+      // Settings
+
       settings = settings ?? ApiClientSettings.Default;
+
+      // Mapping
+
+      MappingInstaller.Register();
 
 //#if DEBUG
       ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
@@ -39,6 +48,7 @@ namespace Cofamilies.ClientApi
       //Context = context;
 
       Accounts = new AccountsClient(settings);
+      People = new PeopleClient(Mapper.Engine, settings);
       //Activities = new ActivitiesService(Context);
       //Devices = new CachingDevicesService(Context);
       //People = new CachingPeopleService(Context);
@@ -53,6 +63,6 @@ namespace Cofamilies.ClientApi
     public IApiClientCache Cache { get; private set; }
     public IApiClientContext Context { get; private set; }
     //public IDeviceService Devices { get; private set; }
-    //public IPeopleService People { get; private set; }
+    public IPeopleClient People { get; private set; }
   }
 }

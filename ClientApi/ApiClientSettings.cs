@@ -17,6 +17,7 @@ namespace Cofamilies.ClientApi
     string AccountsEndpoint { get; }
     RobFactory<HttpClient> HttpClientFactory { get; set; }
     string Endpoint { get; set; }
+    string PeopleEndpoint { get; }
   }
 
   public class ApiClientSettings : IApiClientSettings
@@ -41,6 +42,7 @@ namespace Cofamilies.ClientApi
 
     public RobFactory<HttpClient> HttpClientFactory { get; set; }
 
+    #region Endpoint
     public string Endpoint
     {
       get
@@ -52,6 +54,14 @@ namespace Cofamilies.ClientApi
       }
       set { _endPoint = value; }
     }
-    private string _endPoint;
+    private string _endPoint; 
+    #endregion
+
+    #region PeopleEndpoint
+    public string PeopleEndpoint
+    {
+      get { return Endpoint + "/people"; }
+    } 
+    #endregion
   }
 }

@@ -17,8 +17,10 @@ namespace Cofamilies.ClientApi.Accounts
     public AccountCreateResult(JAccountCreateResult jresult)
     {
       ActivationCode = jresult.ActivationCode;
+      PersonId = jresult.PersonId;
     }
 
     public string ActivationCode { get; set; }
+    public string PersonId { get; set; }
   }
 }
