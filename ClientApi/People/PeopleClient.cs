@@ -72,19 +72,23 @@ namespace Cofamilies.ClientApi.People
       var url = Endpoint + "/" + id;
       using (var client = Settings.HttpClientFactory.Create())
       {
+        // Read
+
         var response = await client.GetAsync(url);
         
+        // Guard
+
         if (response.StatusCode == HttpStatusCode.NotFound)
           return null;
         response.EnsureSuccessStatusCode();
 
-
-
+        // Convert
 
         var json = await response.Content.ReadAsStringAsync();
         var jo = JObject.Parse(json);
         var jresult = jo.SelectToken("person", false).ToObject<JPerson>();
-        //var jresult = JsonConvert.DeserializeObject<JPerson>(json);
+
+        // Map
 
         return MappingEngine.Map<Person>(jresult);
       }
