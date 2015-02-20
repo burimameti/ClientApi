@@ -10,6 +10,7 @@ using Cofamilies.ClientApi.Utilities;
 using Cofamilies.J.Core.Accounts;
 using Cofamilies.J.Core.People;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Rob.Core;
 
 namespace Cofamilies.ClientApi.People
@@ -77,8 +78,13 @@ namespace Cofamilies.ClientApi.People
           return null;
         response.EnsureSuccessStatusCode();
 
+
+
+
         var json = await response.Content.ReadAsStringAsync();
-        var jresult = JsonConvert.DeserializeObject<JPerson>(json);
+        var jo = JObject.Parse(json);
+        var jresult = jo.SelectToken("person", false).ToObject<JPerson>();
+        //var jresult = JsonConvert.DeserializeObject<JPerson>(json);
 
         return MappingEngine.Map<Person>(jresult);
       }
