@@ -34,7 +34,7 @@ namespace Cofamilies.ClientApi
     public ApiClientSettings()
     {
       var byteArray = Encoding.ASCII.GetBytes("username:password1234");
-      HttpClientFactory = new RobFactory<HttpClient>(() => new HttpClient());
+      HttpClientFactory = new RobFactory<HttpClient>(CreateHttpClient);
     }
 
     // Properties
