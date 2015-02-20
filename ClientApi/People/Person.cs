@@ -7,17 +7,24 @@ using Cofamilies.J.Core.People;
 
 namespace Cofamilies.ClientApi.People
 {
+  #region IPerson
   public interface IPerson
-  { 
+  {
+    string Email { get; set; }
+    string Id { get; set; }
+    bool IsZombie { get; set; }
   }
+  #endregion
 
-  public class Person
+  public class Person : IPerson
   {
     // Constructors
 
+    #region Person()
     public Person()
     {
     }
+    #endregion
 
     // Properties
 
