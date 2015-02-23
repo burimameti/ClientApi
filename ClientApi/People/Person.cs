@@ -9,7 +9,7 @@ namespace Cofamilies.ClientApi.People
 {
   #region IPerson
   /// <summary>
-  /// A person (with known identity or as a placeholder) within cofamilies.
+  /// A person within cofamilies.  Can be a known identity or a placeholder (i.e., a 'zombie').
   /// </summary>
   public interface IPerson
   {
@@ -29,6 +29,16 @@ namespace Cofamilies.ClientApi.People
     string Id { get; set; }
 
     /// <summary>
+    /// Indicates whether person has been deleted
+    /// </summary>
+    bool IsDeleted { get; set; }
+
+    /// <summary>
+    /// True if the person is a non-deleted, activated member
+    /// </summary>
+    bool IsMember { get; }
+
+    /// <summary>
     /// A person with "no identity" is considered a zombie.  For example, if Mom registers
     /// for cofamilies, adds her ex-spouse - but does not invite him - then his person
     /// record is considered a zombie.
@@ -44,9 +54,20 @@ namespace Cofamilies.ClientApi.People
     string LastName { get; set; }
 
     /// <summary>
+    /// Null or empty if the person is not a member.  Otherwise an ISO 8601 formatted date/time string
+    /// representing the initial date and time the person became a member.
+    /// </summary>
+    string MemberSinceISOString { get; set; }
+
+    /// <summary>
     /// Full name
     /// </summary>
     string Name { get; set; }
+
+    /// <summary>
+    /// Time zone information identifier in Olsen database format
+    /// </summary>
+    string TimeZoneInfoId { get; set; }
   }
   #endregion
 
@@ -64,9 +85,18 @@ namespace Cofamilies.ClientApi.People
 
     public string Email { get; set; }
     public string Id { get; set; }
+    public bool IsDeleted { get; set; }
+
+    public bool IsMember
+    {
+      get { return !string.IsNullOrEmpty(MemberSinceISOString) && !IsDeleted; }
+    }
+
     public string FirstName { get; set; }
     public string LastName { get; set; }
+    public string MemberSinceISOString { get; set; }
     public string Name { get; set; }
+    public string TimeZoneInfoId { get; set; }
     public bool IsZombie { get; set; }
   }
 }
