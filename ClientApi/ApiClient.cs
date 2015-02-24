@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Net.Security;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Cofamilies.ClientApi.Accounts;
 using Cofamilies.ClientApi.Activities;
 using Cofamilies.ClientApi.Caching;
 using Cofamilies.ClientApi.Installers;
 using Cofamilies.ClientApi.People;
-using Cofamilies.ClientApi.Services;
+using System.Net;
 
 namespace Cofamilies.ClientApi
 {
@@ -42,7 +33,6 @@ namespace Cofamilies.ClientApi
     // Constructor
 
     #region ApiClient()
-    //public ApiClient(IApiClientCache cache, IApiClientContext context)
     public ApiClient(IApiClientSettings settings = null)
     {
       // Settings
@@ -60,7 +50,7 @@ namespace Cofamilies.ClientApi
       //Context = context;
 
       Accounts = new AccountsClient(settings);
-      Activities = new ActivitiesClient(settings);
+      Activities = new ActivitiesClient(Mapper.Engine, settings);
       People = new PeopleClient(Mapper.Engine, settings);
 
       //Devices = new CachingDevicesService(Context);
