@@ -103,6 +103,9 @@
     <Compile Include="Accounts\Account.cs" />
     <Compile Include="Accounts\AccountCreateResult.cs" />
     <Compile Include="Accounts\AccountsClient.cs" />
+    <Compile Include="Activities\Activities.cs" />
+    <Compile Include="Activities\ActivitiesClient.cs" />
+    <Compile Include="Activities\Activity.cs" />
     <Compile Include="ApiClient.cs" />
     <Compile Include="ApiClientContext.cs" />
     <Compile Include="ApiClientSettings.cs" />

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Cofamilies.ClientApi.Accounts;
+using Cofamilies.ClientApi.Activities;
 using Cofamilies.ClientApi.Caching;
 using Cofamilies.ClientApi.Installers;
 using Cofamilies.ClientApi.People;
@@ -16,12 +17,23 @@ using Cofamilies.ClientApi.Services;
 
 namespace Cofamilies.ClientApi
 {
+  /// <summary>
+  /// Facade for ApiClient
+  /// </summary>
+  /// <remarks>Various representations</remarks>
   public interface IApiClient
   {
+    /// <summary>
+    /// Accounts representation.
+    /// </summary>
+    /// <remarks>Requires registered application token or whitelisted IP address</remarks>
     IAccountsClient Accounts { get; }
-    //IActivitiesService Activities { get; }
+    IActivitiesClient Activities { get; }
     IApiClientContext Context { get; }
     //IDeviceService Devices { get; }
+    /// <summary>
+    /// People representation
+    /// </summary>
     IPeopleClient People { get; }    
   }
 
@@ -48,8 +60,9 @@ namespace Cofamilies.ClientApi
       //Context = context;
 
       Accounts = new AccountsClient(settings);
+      Activities = new ActivitiesClient(settings);
       People = new PeopleClient(Mapper.Engine, settings);
-      //Activities = new ActivitiesService(Context);
+
       //Devices = new CachingDevicesService(Context);
       //People = new CachingPeopleService(Context);
     } 
@@ -59,7 +72,7 @@ namespace Cofamilies.ClientApi
 
     public IAccountsClient Accounts { get; private set; }
     public string ApiAddress { get; private set; }
-    //public IActivitiesService Activities { get; private set; }
+    public IActivitiesClient Activities { get; private set; }
     public IApiClientCache Cache { get; private set; }
     public IApiClientContext Context { get; private set; }
     //public IDeviceService Devices { get; private set; }

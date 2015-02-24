@@ -12,8 +12,22 @@ using Rob.Core;
 namespace Cofamilies.ClientApi.Accounts
 {
   #region IAccountsClient
+  /// <summary>
+  /// Accounts representation.
+  /// </summary>
+  /// <remarks>Requires application token or whitelisted IP address</remarks>
   public interface IAccountsClient
   {
+    /// <summary>
+    /// Creates a new account.
+    /// </summary>
+    /// <param name="email">Required.</param>
+    /// <param name="name">Optional. The default value is null.</param>
+    /// <param name="password">Optional. The default value is null.</param>
+    /// <param name="sendActivationEmail">Optional. The default value is true.  If set to <see langword="true"/>, then an activation email is sent to the address specified.</param>
+    /// <param name="acceptTerms">Optional. The default value is true.  Must be set to true to indicate that user has accepted the terms and conditions.</param>
+    /// <returns></returns>
+    /// <remarks></remarks>
     IAccountCreateResult Create(string email, string name = null, string password = null,
       bool sendActivationEmail = true, bool acceptTerms = true);
 
