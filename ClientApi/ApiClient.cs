@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Cofamilies.ClientApi.Accounts;
+using Cofamilies.ClientApi.Activations;
 using Cofamilies.ClientApi.Activities;
 using Cofamilies.ClientApi.Caching;
 using Cofamilies.ClientApi.Installers;
@@ -19,6 +20,7 @@ namespace Cofamilies.ClientApi
     /// </summary>
     /// <remarks>Requires registered application token or whitelisted IP address</remarks>
     IAccountsClient Accounts { get; }
+    IActivationsClient Activations { get; }
     IActivitiesClient Activities { get; }
     IApiClientContext Context { get; }
     //IDeviceService Devices { get; }
@@ -50,6 +52,7 @@ namespace Cofamilies.ClientApi
       //Context = context;
 
       Accounts = new AccountsClient(settings);
+      Activations = new ActivationsClient(Mapper.Engine, settings);
       Activities = new ActivitiesClient(Mapper.Engine, settings);
       People = new PeopleClient(Mapper.Engine, settings);
 
@@ -61,7 +64,7 @@ namespace Cofamilies.ClientApi
     // Properties
 
     public IAccountsClient Accounts { get; private set; }
-    public string ApiAddress { get; private set; }
+    public IActivationsClient Activations { get; private set; }
     public IActivitiesClient Activities { get; private set; }
     public IApiClientCache Cache { get; private set; }
     public IApiClientContext Context { get; private set; }
