@@ -35,7 +35,7 @@ namespace Cofamilies.ClientApi.Activations
     #region Endpoint
     public string Endpoint
     {
-      get { return Settings.AccountsEndpoint; }
+      get { return Settings.ActivationsEndpoint; }
     }
     #endregion
 
@@ -66,9 +66,10 @@ namespace Cofamilies.ClientApi.Activations
       // Post
 
       JActivationCreateResult jresult = null;
+      var url = Endpoint + "/" + id;
       using (var client = Settings.HttpClientFactory.Create())
       {
-        HttpResponseMessage response = await client.PostAsJsonAsync(Endpoint, jactivation);
+        HttpResponseMessage response = await client.PostAsJsonAsync(url, jactivation);
         if (response.IsSuccessStatusCode)
           jresult = await response.Content.ReadAsAsync<JActivationCreateResult>();
 
