@@ -85,6 +85,7 @@ namespace Cofamilies.ClientApi
 
     // Methods
 
+    #region CreateHttpClient()
     protected HttpClient CreateHttpClient()
     {
       var result = new HttpClient();
@@ -94,6 +95,7 @@ namespace Cofamilies.ClientApi
       var byteArray = Encoding.ASCII.GetBytes("{0}:{1}".AsFormat(UserName, Password));
       result.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
       return result;
-    }
+    } 
+    #endregion
   }
 }
