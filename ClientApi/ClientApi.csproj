@@ -54,23 +54,23 @@
     </Reference>
     <Reference Include="Cofamilies.J.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Cofamilies.J.Core.1.0.0-CI00011\lib\net45\Cofamilies.J.Core.dll</HintPath>
+      <HintPath>..\packages\Cofamilies.J.Core.1.0.0-CI00014\lib\net45\Cofamilies.J.Core.dll</HintPath>
     </Reference>
     <Reference Include="Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Core.1.0.0-CI00045\lib\net45\Core.dll</HintPath>
+      <HintPath>..\packages\Core.1.0.0-CI00046\lib\net45\Core.dll</HintPath>
     </Reference>
     <Reference Include="Core.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Core.Data.1.0.0-CI00045\lib\net45\Core.Data.dll</HintPath>
+      <HintPath>..\packages\Core.Data.1.0.0-CI00046\lib\net45\Core.Data.dll</HintPath>
     </Reference>
     <Reference Include="Interfaces.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Interfaces.Core.1.0.0-CI00045\lib\net45\Interfaces.Core.dll</HintPath>
+      <HintPath>..\packages\Interfaces.Core.1.0.0-CI00046\lib\net45\Interfaces.Core.dll</HintPath>
     </Reference>
     <Reference Include="Interfaces.Core.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Interfaces.Core.Data.1.0.0-CI00045\lib\net45\Interfaces.Core.Data.dll</HintPath>
+      <HintPath>..\packages\Interfaces.Core.Data.1.0.0-CI00046\lib\net45\Interfaces.Core.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -113,6 +113,9 @@
     <Compile Include="ApiClientSettings.cs" />
     <Compile Include="Builders\BasicAuthenticationBuilder.cs" />
     <Compile Include="Caching\ApiClientCache.cs" />
+    <Compile Include="CalendarItems\CalendarItem.cs" />
+    <Compile Include="CalendarItems\CalendarItemCreateResult.cs" />
+    <Compile Include="CalendarItems\CalendarItemsClient.cs" />
     <Compile Include="Installers\MappingInstaller.cs" />
     <Compile Include="Models\ActivityModel.cs" />
     <Compile Include="Models\ClientModel.cs" />
@@ -126,6 +129,7 @@
     <Compile Include="Services\PeopleService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Utilities\UrlUtility.cs" />
+    <Compile Include="Values\PersonEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
