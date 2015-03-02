@@ -13,9 +13,41 @@ using Rob.Core;
 
 namespace Cofamilies.ClientApi.CalendarItems
 {
+  #region ICalendarItemsClient
   public interface ICalendarItemsClient
   {
-  }
+    ICalendarItemCreateResult Create(string summary,
+              DateTime startDateTime,
+              DateTime endDateTime,
+              List<PersonEvent> people,
+              string description = "",
+              double lattitude = 0.0,
+              double longitude = 0.0,
+              string locationText = "",
+              string recurrenceRule = "",
+              string range = null,
+              bool isAllDay = false,
+              string eventId = null,
+              string activityId = null);
+
+    Task<ICalendarItemCreateResult> CreateAsync(string summary,
+              DateTime startDateTime,
+              DateTime endDateTime,
+              List<PersonEvent> people,
+              string description = "",
+              double lattitude = 0.0,
+              double longitude = 0.0,
+              string locationText = "",
+              string recurrenceRule = "",
+              string range = null,
+              bool isAllDay = false,
+              string eventId = null,
+              string activityId = null);
+
+    ICalendarItems GetAll(DateTime? since = null);
+    Task<ICalendarItem> GetAllAsync(DateTime? since = null);
+  } 
+  #endregion
 
   public class CalendarItemsClient : ICalendarItemsClient
   {
@@ -44,44 +76,40 @@ namespace Cofamilies.ClientApi.CalendarItems
     // Methods
 
     #region Create(...)
-    public  ICalendarItemCreateResult Create(string summary,
-      DateTime startDate,
-      DateTime endDate,
-      DateTime startDateTime,
-      DateTime endDateTime,
-      string description,
-      string eventId,
-      List<PersonEvent> people,
-      double lattitude = 0.0,
-      double longitude = 0.0,
-      string locationText = "",
-      string recurrenceRule = "",
-      string range = null,
-      bool isAllDay = false,
-      string activityId = null)
+    public ICalendarItemCreateResult Create(string summary,
+                                            DateTime startDateTime,
+                                            DateTime endDateTime,
+                                            List<PersonEvent> people,
+                                            string description = "",
+                                            double lattitude = 0.0,
+                                            double longitude = 0.0,
+                                            string locationText = "",
+                                            string recurrenceRule = "",
+                                            string range = null,
+                                            bool isAllDay = false,
+                                            string eventId = null,
+                                            string activityId = null)
     {
-      var task = CreateAsync(summary, startDate, endDate, startDateTime, endDateTime, description, eventId, people,
-        lattitude, longitude, locationText, recurrenceRule, range, isAllDay, activityId);
+      var task = CreateAsync(summary, startDateTime, endDateTime, people, description,
+        lattitude, longitude, locationText, recurrenceRule, range, isAllDay, eventId, activityId);
       return task.GetAwaiter().GetResult();
     }
     #endregion
 
     #region CreateAsync(...)
     public async Task<ICalendarItemCreateResult> CreateAsync(string summary,
-                                                             DateTime startDate,
-                                                             DateTime endDate,
-                                                             DateTime startDateTime,
-                                                             DateTime endDateTime,
-                                                             string description,
-                                                             string eventId,
-                                                             List<PersonEvent> people, 
-                                                             double lattitude = 0.0,
-                                                             double longitude = 0.0,
-                                                             string locationText = "",
-                                                             string recurrenceRule = "",
-                                                             string range = null,
-                                                             bool isAllDay = false,
-                                                             string activityId = null)
+                                                              DateTime startDateTime,
+                                                              DateTime endDateTime,
+                                                              List<PersonEvent> people,
+                                                              string description = "",
+                                                              double lattitude = 0.0,
+                                                              double longitude = 0.0,
+                                                              string locationText = "",
+                                                              string recurrenceRule = "",
+                                                              string range = null,
+                                                              bool isAllDay = false,
+                                                              string eventId = null,
+                                                              string activityId = null)
     {
       // Create json to post
 
@@ -89,8 +117,6 @@ namespace Cofamilies.ClientApi.CalendarItems
       {
         Summary = summary ?? "",
         ActivityId = activityId ?? "",
-        StartDate = startDate.ToISO8601(),
-        EndDate = endDate.ToISO8601(),
         StartDateTime = startDateTime.ToISO8601(),
         EndDateTime = endDateTime.ToISO8601(),
         Description = description,
@@ -119,6 +145,20 @@ namespace Cofamilies.ClientApi.CalendarItems
         return MappingEngine.Map<CalendarItemCreateResult>(jresult);
       }
     }
+    #endregion
+
+    #region GetAll(DateTime? since = null)
+    public ICalendarItems GetAll(DateTime? since = null)
+    {
+      throw new NotImplementedException();
+    } 
+    #endregion
+
+    #region GetAllAsync(DateTime? since = null)
+    public Task<ICalendarItem> GetAllAsync(DateTime? since = null)
+    {
+      throw new NotImplementedException();
+    } 
     #endregion
   }
 }

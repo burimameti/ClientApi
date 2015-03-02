@@ -115,6 +115,7 @@
     <Compile Include="Caching\ApiClientCache.cs" />
     <Compile Include="CalendarItems\CalendarItem.cs" />
     <Compile Include="CalendarItems\CalendarItemCreateResult.cs" />
+    <Compile Include="CalendarItems\CalendarItems.cs" />
     <Compile Include="CalendarItems\CalendarItemsClient.cs" />
     <Compile Include="Installers\MappingInstaller.cs" />
     <Compile Include="Models\ActivityModel.cs" />
