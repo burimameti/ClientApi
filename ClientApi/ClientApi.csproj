@@ -85,6 +85,9 @@
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>..\packages\Microsoft.Bcl.Immutable.1.0.34\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
@@ -111,12 +114,16 @@
     <Compile Include="ApiClient.cs" />
     <Compile Include="ApiClientContext.cs" />
     <Compile Include="ApiClientSettings.cs" />
+    <Compile Include="AuthenticationManager\AuthenticationManager.cs" />
+    <Compile Include="AuthenticationManager\AuthenticationResult.cs" />
     <Compile Include="Builders\BasicAuthenticationBuilder.cs" />
     <Compile Include="Caching\ApiClientCache.cs" />
     <Compile Include="CalendarItems\CalendarItem.cs" />
     <Compile Include="CalendarItems\CalendarItemCreateResult.cs" />
     <Compile Include="CalendarItems\CalendarItems.cs" />
     <Compile Include="CalendarItems\CalendarItemsClient.cs" />
+    <Compile Include="Identity\CofamiliesIdentity.cs" />
+    <Compile Include="Identity\CofamiliesPrincipal.cs" />
     <Compile Include="Installers\MappingInstaller.cs" />
     <Compile Include="Models\ActivityModel.cs" />
     <Compile Include="Models\ClientModel.cs" />
