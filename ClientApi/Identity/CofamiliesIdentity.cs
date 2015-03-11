@@ -13,7 +13,7 @@ namespace Cofamilies.ClientApi.Identity
 
   public class CofamiliesIdentity : ICofamiliesIdentity
   {
-    public CofamiliesIdentity(string name, string authenticationType, bool isAuthenticated)
+    public CofamiliesIdentity(string name, string authenticationType,bool isAuthenticated)
     {
       Name = name;
       AuthenticationType = authenticationType;
