@@ -17,12 +17,20 @@ namespace Cofamilies.ClientApi.Identity
   public class CofamiliesPrincipal : ICofamiliesPrincipal
   {
     #region MyRegion
-		public CofamiliesPrincipal(ICofamiliesIdentity identity, IEnumerable<string> roles)
+    public CofamiliesPrincipal(ICofamiliesIdentity identity, IEnumerable<string> roles)
     {
       CofamiliesIdentity = identity;
       Roles = ImmutableList.CreateRange(roles);
     } 
 	  #endregion
+
+    #region MyRegion
+    public CofamiliesPrincipal(ICofamiliesIdentity identity, params string[] roles)
+    {
+      CofamiliesIdentity = identity;
+      Roles = ImmutableList.CreateRange(roles);
+    }
+    #endregion
 
     // Properties
     

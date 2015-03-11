@@ -8,16 +8,23 @@ namespace Cofamilies.ClientApi.Identity
 {
   public interface IAuthenticationResult
   {
-    ICofamiliesIdentity Identity { get; }
+    ICofamiliesPrincipal Principal { get; }
+    bool Success { get; }
   }
 
   public class AuthenticationResult: IAuthenticationResult
   {
     public AuthenticationResult(string userName, string authenticationType, bool isAuthenticated)
     {
-      Identity = new CofamiliesIdentity(userName, authenticationType, isAuthenticated);
+      Success = isAuthenticated;
+      if (Success)
+      {
+        var identity = new CofamiliesIdentity(userName, authenticationType, isAuthenticated);
+        Principal = new CofamiliesPrincipal(identity, "user");       
+      }
     }
 
-    public ICofamiliesIdentity Identity { get; private set; }
+    public ICofamiliesPrincipal Principal { get; private set; }
+    public bool Success { get; private set; }
   }
 }
