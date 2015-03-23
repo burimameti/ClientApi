@@ -24,6 +24,22 @@ namespace Cofamilies.ClientApi.Activities
 
     // Methods
 
+    #region AbsoluteId
+    public string AbsoluteId
+    {
+      get
+      {
+        if (string.IsNullOrEmpty(ObjectId))
+          return "";
+
+        if (string.IsNullOrEmpty(Instance))
+          return ObjectId;
+
+        return ObjectId + "-" + Instance;
+      }
+    }
+    #endregion
+
     public ChangeSet ChangeSet
     {
       get
