@@ -54,7 +54,7 @@
     </Reference>
     <Reference Include="Cofamilies.J.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Cofamilies.J.Core.1.0.0-CI00015\lib\net45\Cofamilies.J.Core.dll</HintPath>
+      <HintPath>..\packages\Cofamilies.J.Core.1.0.0-CI00016\lib\net45\Cofamilies.J.Core.dll</HintPath>
     </Reference>
     <Reference Include="Core">
       <HintPath>..\packages\Core.1.0.0-CI00049\lib\net45\Core.dll</HintPath>
@@ -119,6 +119,9 @@
     <Compile Include="CalendarItems\CalendarItemCreateResult.cs" />
     <Compile Include="CalendarItems\CalendarItems.cs" />
     <Compile Include="CalendarItems\CalendarItemsClient.cs" />
+    <Compile Include="Devices\Device.cs" />
+    <Compile Include="Devices\DeviceClient.cs" />
+    <Compile Include="Devices\Devices.cs" />
     <Compile Include="Identity\AuthenticationResult.cs" />
     <Compile Include="Identity\CofamiliesIdentity.cs" />
     <Compile Include="Identity\CofamiliesPrincipal.cs" />
@@ -150,6 +153,7 @@
       <Name>Interfaces.ClientApi</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,6 +4,7 @@ using Cofamilies.ClientApi.Activations;
 using Cofamilies.ClientApi.Activities;
 using Cofamilies.ClientApi.Caching;
 using Cofamilies.ClientApi.CalendarItems;
+using Cofamilies.ClientApi.Devices;
 using Cofamilies.ClientApi.Installers;
 using Cofamilies.ClientApi.People;
 using System.Net;
@@ -24,6 +25,7 @@ namespace Cofamilies.ClientApi
     IActivationsClient Activations { get; }
     IActivitiesClient Activities { get; }
     ICalendarItemsClient CalendarItems { get; }
+    IDevicesClient Devices { get; }
     IApiClientContext Context { get; }
     //IDeviceService Devices { get; }
     /// <summary>
@@ -57,9 +59,9 @@ namespace Cofamilies.ClientApi
       Activations = new ActivationsClient(Mapper.Engine, settings);
       Activities = new ActivitiesClient(Mapper.Engine, settings);
       CalendarItems = new CalendarItemsClient(Mapper.Engine, settings);
+      Devices = new DevicesClient(Mapper.Engine, settings);
       People = new PeopleClient(Mapper.Engine, settings);
 
-      //Devices = new CachingDevicesService(Context);
       //People = new CachingPeopleService(Context);
     } 
     #endregion
@@ -72,7 +74,7 @@ namespace Cofamilies.ClientApi
     public IApiClientCache Cache { get; private set; }
     public ICalendarItemsClient CalendarItems { get; private set; }
     public IApiClientContext Context { get; private set; }
-    //public IDeviceService Devices { get; private set; }
+    public IDevicesClient Devices { get; private set; }
     public IPeopleClient People { get; private set; }
   }
 }

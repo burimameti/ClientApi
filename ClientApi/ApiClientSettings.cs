@@ -19,6 +19,7 @@ namespace Cofamilies.ClientApi
     string ActivationsEndpoint { get; }
     string ActivitiesEndpoint { get; }
     string CalendarItemsEndpoint { get; }
+    string DevicesEndpoint { get; }
     RobFactory<HttpClient> HttpClientFactory { get; set; }
     string UserName { get; set; }
     string Password { get; set; }
@@ -60,7 +61,12 @@ namespace Cofamilies.ClientApi
 
     public string CalendarItemsEndpoint
     {
-      get { return Endpoint + "calendaritems"; }
+      get { return Endpoint + "/calendaritems"; }
+    }
+
+    public string DevicesEndpoint
+    {
+      get { return Endpoint + "/devices"; }
     }
 
     public RobFactory<HttpClient> HttpClientFactory { get; set; }
