@@ -46,7 +46,7 @@
     </Reference>
     <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Windsor, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -54,27 +54,26 @@
     </Reference>
     <Reference Include="Cofamilies.J.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Cofamilies.J.Core.1.0.0-CI00014\lib\net45\Cofamilies.J.Core.dll</HintPath>
+      <HintPath>..\packages\Cofamilies.J.Core.1.0.0-CI00015\lib\net45\Cofamilies.J.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Core.1.0.0-CI00046\lib\net45\Core.dll</HintPath>
+    <Reference Include="Core">
+      <HintPath>..\packages\Core.1.0.0-CI00049\lib\net45\Core.dll</HintPath>
     </Reference>
     <Reference Include="Core.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Core.Data.1.0.0-CI00046\lib\net45\Core.Data.dll</HintPath>
+      <HintPath>..\packages\Core.Data.1.0.0-CI00049\lib\net45\Core.Data.dll</HintPath>
     </Reference>
     <Reference Include="Interfaces.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Interfaces.Core.1.0.0-CI00046\lib\net45\Interfaces.Core.dll</HintPath>
+      <HintPath>..\packages\Interfaces.Core.1.0.0-CI00049\lib\net45\Interfaces.Core.dll</HintPath>
     </Reference>
     <Reference Include="Interfaces.Core.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Interfaces.Core.Data.1.0.0-CI00046\lib\net45\Interfaces.Core.Data.dll</HintPath>
+      <HintPath>..\packages\Interfaces.Core.Data.1.0.0-CI00049\lib\net45\Interfaces.Core.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.7\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=3.2.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -91,9 +90,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
@@ -145,7 +144,6 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Interfaces.ClientApi\Interfaces.ClientApi.csproj">
       <Project>{ffe5acac-18c9-4c0e-a26d-e5b94ec05c15}</Project>
